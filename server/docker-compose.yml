@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  test-mysql:
+    image: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: cycling_result_java
+      MYSQL_USER: node
+      MYSQL_PASSWORD: node
+      MYSQL_ROOT_PASSWORD: node
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+        - mysql_data:/var/lib/mysql
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://test-mysql:3306/cycling_result_java
+      SPRING_DATASOURCE_USERNAME: node
+      SPRING_DATASOURCE_PASSWORD: node
+    depends_on:
+      - test-mysql
+    links:
+      - test-mysql
+    #command: ["./wait-for-it.sh", "db:3306", "--"]
+volumes:
+  db_data: {}
