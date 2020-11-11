@@ -14,15 +14,16 @@
 }
 
 .App-menu {
-  width: 200px;
+  width: 345px;
   height: 100%;
   position: fixed;
 }
 .App-home {
-  margin-left: 200px;
-  height: 100%;
+  margin-left: 345px;
   padding: 76px;
   position: fixed;
+  border: 12px solid #6a5cf8;
+  border-bottom: 1px red;
 }
 
 .App-header {

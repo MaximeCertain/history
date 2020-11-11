@@ -1,0 +1,28 @@
+.container{
+    width: 350px;
+    max-width: 350px;
+    max-height: 300px;
+    height: 300px;
+    padding: 40px 14px 40px 14px;
+    background-color: #2421485e;
+    border-radius: 50% 20% / 10% 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family:  'Fira Sans' ;
+    margin: 13px;
+}
+.container > span{
+    text-transform: uppercase;
+}
+.subContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.subContainer > * {
+    padding: 5px;
+}
+

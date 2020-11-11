@@ -1,0 +1,12 @@
+.elemSubContainer{
+    width: 150px;
+    max-width: 150px;
+    height: 190px;
+    max-height: 190px;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+    color: aliceblue;
+    margin-left: 3px;
+    margin-right: 3px;
+}

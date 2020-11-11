@@ -1,12 +1,12 @@
 .menu {
-    width: 200px;
+    width: 345px;
     height: 100%;
     position: fixed;
     padding-top: 100px;
     z-index:1;
     top:0;
     left:0;
-    background-color: #794444;
+    background-color: #6a5cf8;
 }
 
 .logoCard{

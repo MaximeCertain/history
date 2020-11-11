@@ -3,6 +3,7 @@ package com.examplet.demo.service.omdb_api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParseException;
 import org.springframework.boot.json.JsonParser;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,6 +23,9 @@ public class OmdbRepository {
         OmbdRestTemplate restTemplate = new OmbdRestTemplate();
 
         String result = restTemplate.getForObject(uri, String.class);
+
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri, String.class);
+
 
         return result;
     }

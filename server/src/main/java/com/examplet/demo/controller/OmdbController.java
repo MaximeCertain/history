@@ -17,7 +17,7 @@ public class OmdbController {
         OmdbRequest omdbRequest = new OmdbRequest("blade", 2017);
         String movies = omdbRepository.getMovies(omdbRequest);
 
-      /*  final String uri = "http://www.omdbapi.com/?t=blade&y=2017&apikey=81c42988";
+        /*  final String uri = "http://www.omdbapi.com/?t=blade&y=2017&apikey=81c42988";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
