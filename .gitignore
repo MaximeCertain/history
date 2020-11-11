@@ -6,3 +6,4 @@ server/.vscode
 !**/src/main/**/target/
 !**/src/test/**/target/
 client/node_modules
+client/.idea
