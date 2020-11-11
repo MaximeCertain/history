@@ -1,4 +1,4 @@
-package com.examplet.demo.payload.response;
+package com.examplet.demo.service.auth.payload.response;
 
 public class MessageResponse {
     private String message;

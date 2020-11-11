@@ -1,6 +1,6 @@
-package com.examplet.demo.security.jwt;
+package com.examplet.demo.service.auth.security.jwt;
 
-import com.examplet.demo.security.services.UserDetailsServiceImpl;
+import com.examplet.demo.service.auth.security.services.UserDetailsServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
@@ -33,11 +32,15 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         try {
             String jwt = parseJwt(request);
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+                //recupère l'username dans le token
                 String username = jwtUtils.getUserNameFromJwtToken(jwt);
-
+                //retourne un objet userDetails à partir de l'username précedemment récupéré.
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                //instancie objet AUthentication à partir de l'userDetails
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
+
+
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);

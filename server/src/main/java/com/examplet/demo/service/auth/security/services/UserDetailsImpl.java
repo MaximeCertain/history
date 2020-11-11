@@ -1,4 +1,4 @@
-package com.examplet.demo.security.services;
+package com.examplet.demo.service.auth.security.services;
 
 import com.examplet.demo.beans.User;
 import net.minidev.json.annotate.JsonIgnore;
@@ -25,6 +25,14 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
+    /**
+     * COntient différentes informations pour construire un objet d'authentification
+     * @param id
+     * @param username
+     * @param email
+     * @param password
+     * @param authorities
+     */
     public UserDetailsImpl(int id, String username, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
@@ -38,7 +46,7 @@ public class UserDetailsImpl implements UserDetails {
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
-
+            //forme l'objet et le retourne
         return new UserDetailsImpl(
                 user.getId(),
                 user.getUsername(),
@@ -98,4 +106,5 @@ public class UserDetailsImpl implements UserDetails {
             return false;
         UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
-    }}
+    }
+}

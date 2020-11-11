@@ -1,10 +1,6 @@
-package com.examplet.demo.payload.response;
+package com.examplet.demo.service.auth.payload.response;
 
-import com.examplet.demo.beans.Role;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class JwtResponse {
     private String token;

@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 function MenuItem() {
+    let title = useState("home");
     return (
         <div>
-            Coucou
+           <a> <h1>{title}</h1></a>
         </div>
     )
 }

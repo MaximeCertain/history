@@ -1,9 +1,8 @@
-package com.examplet.demo.payload.request;
+package com.examplet.demo.service.auth.payload.request;
 
-public class SignUpRequest {
+public class LoginRequest {
     private String username;
     private String password;
-    private String email;
 
     public String getUsername() {
         return username;
@@ -19,13 +18,5 @@ public class SignUpRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

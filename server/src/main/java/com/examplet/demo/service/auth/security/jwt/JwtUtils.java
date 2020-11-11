@@ -1,11 +1,11 @@
-package com.examplet.demo.security.jwt;
+package com.examplet.demo.service.auth.security.jwt;
 
-import com.examplet.demo.security.services.UserDetailsImpl;
+import com.examplet.demo.service.auth.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import org.springframework.security.core.Authentication;
+
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
