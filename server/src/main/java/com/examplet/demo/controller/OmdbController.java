@@ -2,28 +2,35 @@ package com.examplet.demo.controller;
 
 import com.examplet.demo.service.omdb_api.OmdbRepository;
 import com.examplet.demo.service.omdb_api.OmdbRequest;
+import com.examplet.demo.service.omdb_api.pojo.Movie;
+import net.minidev.json.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class OmdbController {
 
     @Autowired
     OmdbRepository omdbRepository;
 
-    @GetMapping("/movies")
-    public String getAllRaces() {
-        OmdbRequest omdbRequest = new OmdbRequest("blade", 2017);
-        String movies = omdbRepository.getMovies(omdbRequest);
-
-        /*  final String uri = "http://www.omdbapi.com/?t=blade&y=2017&apikey=81c42988";
-
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-
-        System.out.println(result);
-        OmbdConfig ombdConfig = new OmbdConfig();*/
+    @GetMapping(value = "/movies", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Movie> getMovies() throws ParseException {
+        OmdbRequest omdbRequest = new OmdbRequest(null, null, "Raiders", 2);
+        Iterable<Movie> movies = omdbRepository.getMovies(omdbRequest);
         return movies;
+    }
+
+    @GetMapping(value = "/movie", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getMovie() {
+        OmdbRequest omdbRequest = new OmdbRequest("blade", 2017, null, null);
+        String movie = omdbRepository.getMovie(omdbRequest);
+        return movie;
     }
 }

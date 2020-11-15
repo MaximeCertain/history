@@ -24,6 +24,14 @@ public class GetUriFromRequest {
             requestUris.put("t", omdbRequest.getCode());
         }
 
+        if (omdbRequest.getPage() != null) {
+            requestUris.put("Page", omdbRequest.getPage().toString());
+        }
+
+        if (omdbRequest.getSearch() != null) {
+            requestUris.put("s", omdbRequest.getSearch());
+        }
+
         char accolade = '?';
         for (Map.Entry<String, String> item : requestUris.entrySet()) {
             uri.append(accolade + item.getKey() + "=" + item.getValue());
