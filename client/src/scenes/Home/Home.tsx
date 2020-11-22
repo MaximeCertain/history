@@ -8,6 +8,13 @@ interface IProps {
 interface IState {
     movies?: [];
 }
+interface Movie{
+    Title: string,
+    Year: number,
+    Poster: string,
+    Type: string,
+    imdbID: string
+}
 
 class Home extends React.Component<IProps, IState> {
     constructor(props: IProps) {
@@ -26,11 +33,10 @@ class Home extends React.Component<IProps, IState> {
     }
 
     render() {
-        {let movies = this.state.movies}
         return (
             <div className={"moviesContainer"}>
-                {typeof this.state.movies !== "undefined" && this.state.movies.map((user: any) => (
-                    <MovieCard />
+                {typeof this.state.movies !== "undefined" && this.state.movies.map((movie: Movie) => (
+                    <MovieCard movie={movie} />
                 ))}
 
             </div>

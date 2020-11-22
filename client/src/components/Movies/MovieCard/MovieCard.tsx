@@ -3,21 +3,29 @@ import "./MovieCard.css"
 import Title from "../../DefaultsElements/Title";
 import ImageMovieCard from "./components/ImageMovieCard";
 import DescriptionMovieCard from "./components/DescriptionMovieCard";
+
+interface Movie{
+    Title: string,
+    Year: number,
+    Poster: string,
+    Type: string,
+    imdbID: string
+}
 interface IProps {
+    movie: Movie
 }
 
 interface IState {
 }
 export class MovieCard extends Component<IProps, IState>{
-
     render() {
         return <div className={"container"}>
 
-            <Title title={"Le silence des ânes"} color={"white"}/>
+            <Title title={this.props.movie.Title} color={"white"}/>
 
             <div className={"subContainer"}>
-                <ImageMovieCard src={"http://www.omdbapi.com/src/poster.jpg"}/>
-                <DescriptionMovieCard description={"Le silence des Anes est un film réalisé par Alejandro González Iñárritu sorti le 31 février 2020 "}/>
+                <ImageMovieCard src={this.props.movie.Poster}/>
+                <DescriptionMovieCard description={this.props.movie.Year}/>
             </div>
 
         </div>;

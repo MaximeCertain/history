@@ -5,6 +5,7 @@ import com.examplet.demo.repository.RaceRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/race")
 @Component
+//@PreAuthorize("isAuthenticated()") => nécéssite authentification pour accèder à ces ressources
+//https://developer.okta.com/blog/2019/06/20/spring-preauthorize
 public class RaceController {
-
     @Autowired
     private RaceRepository raceRepository;
 
@@ -38,6 +40,11 @@ public class RaceController {
     Race getById(@PathVariable int id) throws NotFoundException {
         return raceRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("not found"));
+    }
+
+    @GetMapping("/hello")
+    String hello() {
+        return "hello world";
     }
 
     @PutMapping("/put/{id}")

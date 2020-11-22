@@ -2,7 +2,7 @@ import React from "react";
 import "./ImageMovieCard.css"
 
 interface DescriptionMovieCardProps {
-    description: string;
+    description: any;
 }
 
 export default function descriptionMovieCard(Props: DescriptionMovieCardProps) {

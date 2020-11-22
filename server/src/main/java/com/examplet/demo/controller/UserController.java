@@ -1,8 +1,10 @@
 package com.examplet.demo.controller;
 
+import com.examplet.demo.beans.Race;
 import com.examplet.demo.beans.User;
 import com.examplet.demo.repository.UserRepository;
 import javassist.NotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,15 @@ public class UserController {
     @GetMapping("/user/get/{id}")
     public User getUser(@PathVariable("id") int id) throws NotFoundException {
         return userRepository.findById(id).orElseThrow(() -> new NotFoundException("not found"));
+    }
+
+    @PutMapping("/user/put/{id}")
+    public String updateUser(@PathVariable("id") int id, @RequestBody User user) {
+        User userUpdated = new User();
+        BeanUtils.copyProperties(user, userUpdated);
+        userUpdated.setId(id);
+        userRepository.save(userUpdated);
+        return "object_edited";
     }
 
     @PostMapping(path = "/user", consumes = "application/json", produces = "application/json")
