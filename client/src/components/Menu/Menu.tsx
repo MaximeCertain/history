@@ -4,6 +4,7 @@ import Logo from './components/Logo/Logo';
 import Title from "../DefaultsElements/Title";
 import MenuItem from "./components/MenuItem/MenuItem";
 import {Login} from "../Login/Login";
+import {Comment} from "../Comments/Comment";
 
 
 function Menu() {
@@ -16,6 +17,7 @@ function Menu() {
                 <Login/>
 
                     <MenuItem title={"coo"}/>
+                    <Comment/>
             </div>
         </div>
 );

@@ -18,6 +18,7 @@ interface IProps {
 interface IState {
 }
 export class MovieCard extends Component<IProps, IState>{
+
     render() {
         return <div className={"container"}>
 

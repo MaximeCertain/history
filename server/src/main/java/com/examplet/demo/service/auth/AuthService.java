@@ -106,8 +106,3 @@ public class AuthService implements AuthInterface {
 
 }
 
-class PrintForTest {
-    public static void print(String input) {
-        System.out.println(input);
-    }
-}

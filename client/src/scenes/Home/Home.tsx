@@ -25,7 +25,7 @@ class Home extends React.Component<IProps, IState> {
     }
 
     componentDidMount() {
-        axios.get(`http://www.omdbapi.com/?s=Batman&page=2&apikey=81c42988`)
+       axios.get(`http://www.omdbapi.com/?s=Batman&page=2&apikey=81c42988`)
             .then(res => {
                 const movies = res.data.Search;
                 this.setState({movies});

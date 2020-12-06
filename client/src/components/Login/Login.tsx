@@ -36,8 +36,6 @@ export class Login extends Component<any, any> {
         //alert('Le nom a été soumis : ' + this.state.value);
 
         event.preventDefault();
-        console.log("aaaaa");
-
 
         let response = await axios.post(`http://localhost:8080/api/auth/signin`, {
             username: this.state.username,
